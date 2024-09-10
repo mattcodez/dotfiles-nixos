@@ -116,7 +116,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 3200 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -173,6 +173,20 @@
         AllowUnencrypted = true;
       };
     };
+  };
+
+  services.hedgedoc = {
+    enable = true;
+    #settings.host = "192.168.86.177";
+    settings.host = "0.0.0.0";
+    settings.domain = "nixos.lan";
+    settings.urlAddPort = true;
+    settings.port = 3200;
+    #settings.allowOrigin = [
+     #   "localhost"
+      #  "nixos"
+       # "192.168.86.177"
+   # ];
   };
   
   programs.tmux = {
